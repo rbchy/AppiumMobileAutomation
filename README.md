@@ -275,4 +275,5 @@ This project is designed for **educational and portfolio purposes**. The test cr
 
 ---
 
-> **Version:** 1.0.0 &nbsp;|&nbsp; **Last Updated:** June 2026 &nbsp;|&nbsp; **Author:** RB Chowdhury
+> **Version:** 1.0.0 &nbsp;|&nbsp; **Last Updated:** June 2026 &nbsp;|&nbsp; **Author:** Ranajit B. Chowdhury
+> **QA Automation Engineer
