@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!--
+    SMOKE SUITE — runs only the most critical tests.
+    Run with: mvn clean test -DsuiteXmlFile=src/test/resources/testng-smoke.xml
+-->
+<suite name="MobileSmokeSuite" verbose="2">
+
+    <test name="SmokeAddToCart">
+        <classes>
+            <class name="tests.AddToCartTest"/>
+        </classes>
+    </test>
+
+</suite>

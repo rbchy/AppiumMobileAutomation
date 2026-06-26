@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!--
+    FULL REGRESSION SUITE — runs all tests.
+    To run only smoke: use testng-smoke.xml
+    To run a single group: use testng-login.xml etc.
+-->
+<suite name="MobileRegressionSuite" verbose="2" parallel="false">
+
+    <test name="LoginTests">
+        <classes>
+            <class name="tests.LoginTest"/>
+        </classes>
+    </test>
+
+    <test name="AddToCartTests">
+        <classes>
+            <class name="tests.AddToCartTest"/>
+        </classes>
+    </test>
+
+    <test name="CartManagementTests">
+        <classes>
+            <class name="tests.CartManagementTest"/>
+        </classes>
+    </test>
+
+    <test name="ProductSearchTests">
+        <classes>
+            <class name="tests.ProductSearchTest"/>
+        </classes>
+    </test>
+
+    <test name="NegativeTests">
+        <classes>
+            <class name="tests.NegativeTest"/>
+        </classes>
+    </test>
+
+    <test name="CheckoutTests">
+        <classes>
+            <class name="tests.CheckoutTest"/>
+        </classes>
+    </test>
+
+</suite>
