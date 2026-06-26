@@ -1,7 +1,22 @@
-# 📱 AppiumMobileAutomation
+# AppiumMobileAutomation — Java + Selenium + Appium + TestNG
 
-> **End-to-end Mobile Test Automation Framework** for the Sauce Labs My Demo App (Android) using Appium, TestNG, Maven, and Allure Reports — following the Page Object Model design pattern.
+![Java](https://img.shields.io/badge/Java-11+-orange?logo=java)
+![Selenium](https://img.shields.io/badge/Selenium-WebDriver-43B02A?logo=selenium)
+![Appium java-client](https://img.shields.io/badge/Appium-brightgreen?logo=Appium)
+![TestNG](https://img.shields.io/badge/TestNG-Runner-red)
+![Maven](https://img.shields.io/badge/Maven-Build-C71A36?logo=apache-maven)
+![Allure](https://img.shields.io/badge/Allure-Reports-yellow)
+![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
+**Author:** Ranajit Baran Chowdhury — Software Programmer & QA Automation Engineer
+**Email:** chyranajit@gmail.com
+**Phone:** +1 (267) 342-5565
+**GitHub:** (https://github.com/rbchy)
+**Portfolio:** [rbc6543.wixsite.com/rbc-portfolio](https://rbc6543.wixsite.com/rbc-portfolio)
+
+**End-to-end Mobile Test Automation Framework** for the Sauce Labs My Demo App (Android) using Appium, TestNG, Maven, and Allure Reports — following the Page Object Model design pattern.
+
+🌐 **Application Under Test:** [saucedemo.com](https://www.saucedemo.com)
 ---
 
 ## 🏆 Test Results
@@ -276,4 +291,4 @@ This project is designed for **educational and portfolio purposes**. The test cr
 ---
 
 > **Version:** 1.0.0 &nbsp;|&nbsp; **Last Updated:** June 2026 &nbsp;|&nbsp; **Author:** Ranajit B. Chowdhury
-> **QA Automation Engineer
+> **Software Developer & QA Automation Engineer
