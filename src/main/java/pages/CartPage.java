@@ -55,14 +55,7 @@ public class CartPage {
             .until(ExpectedConditions.textToBe(cartPageHeader, "My Cart"));
 
         // Diagnostic: save cart page source so element IDs can be verified
-        try {
-            String pageSource = driver.getPageSource();
-            Files.write(
-                Paths.get("/Users/ranajitchowdhury/eclipse-workspace/AppiumMobileAutomation/cart_page_source.xml"),
-                pageSource.getBytes()
-            );
-            System.out.println("INFO: Cart page source saved to cart_page_source.xml");
-        } catch (Exception ignored) {}
+        utils.Diagnostics.savePageSource(driver, "cart_page_source.xml");
     }
 
     /** Returns current cart badge count. Returns 0 if badge not visible. */

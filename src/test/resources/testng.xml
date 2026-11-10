@@ -4,7 +4,7 @@
 <!--
     FULL REGRESSION SUITE — runs all tests.
     To run only smoke: use testng-smoke.xml
-    To run a single group: use testng-login.xml etc.
+    Device-free unit tests: mvn test -Dsuite=testng-unit
 -->
 <suite name="MobileRegressionSuite" verbose="2" parallel="false">
 

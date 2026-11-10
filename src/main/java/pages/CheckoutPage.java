@@ -106,13 +106,8 @@ public class CheckoutPage {
         }
     }
 
-    /** Writes driver.getPageSource() to workspace so element IDs can be inspected. */
+    /** Writes driver.getPageSource() to target/page-sources/ so element IDs can be inspected. */
     private void savePageSource(String fileName) {
-        try {
-            Files.write(
-                Paths.get("/Users/ranajitchowdhury/eclipse-workspace/AppiumMobileAutomation/" + fileName),
-                driver.getPageSource().getBytes()
-            );
-        } catch (Exception ignored) {}
+        utils.Diagnostics.savePageSource(driver, fileName);
     }
 }

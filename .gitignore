@@ -1,0 +1,15 @@
+target/
+test-output/
+allure-results/
+allure-report/
+*.apk
+appium.log
+appium.pid
+*_source.xml
+debug_*.xml
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.DS_Store

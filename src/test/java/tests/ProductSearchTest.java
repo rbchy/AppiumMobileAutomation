@@ -73,11 +73,9 @@ public class ProductSearchTest extends BaseTest {
         List<WebElement> prices = homePage.getAllProductPrices();
         Assert.assertFalse(prices.isEmpty(), "Product prices should not be empty");
 
-        List<Double> priceValues = parsePrices(prices);
-        for (int i = 0; i < priceValues.size() - 1; i++) {
-            Assert.assertTrue(priceValues.get(i) <= priceValues.get(i + 1),
-                "Price at index " + i + " should be ≤ price at index " + (i + 1));
-        }
+        List<java.math.BigDecimal> priceValues = parsePrices(prices);
+        Assert.assertTrue(utils.Prices.isAscending(priceValues),
+            "Prices should be ascending but were " + priceValues);
         System.out.println("PASS: Price ascending — cheapest first: $" + priceValues.get(0));
     }
 
@@ -91,11 +89,9 @@ public class ProductSearchTest extends BaseTest {
         List<WebElement> prices = homePage.getAllProductPrices();
         Assert.assertFalse(prices.isEmpty(), "Product prices should not be empty");
 
-        List<Double> priceValues = parsePrices(prices);
-        for (int i = 0; i < priceValues.size() - 1; i++) {
-            Assert.assertTrue(priceValues.get(i) >= priceValues.get(i + 1),
-                "Price at index " + i + " should be ≥ price at index " + (i + 1));
-        }
+        List<java.math.BigDecimal> priceValues = parsePrices(prices);
+        Assert.assertTrue(utils.Prices.isDescending(priceValues),
+            "Prices should be descending but were " + priceValues);
         System.out.println("PASS: Price descending — most expensive first: $" + priceValues.get(0));
     }
 
@@ -126,13 +122,8 @@ public class ProductSearchTest extends BaseTest {
         return list;
     }
 
-    private List<Double> parsePrices(List<WebElement> elements) {
-        List<Double> list = new ArrayList<>();
-        for (WebElement e : elements) {
-            // Price format: "$ 29.99"
-            String raw = e.getText().replace("$", "").trim();
-            list.add(Double.parseDouble(raw));
-        }
-        return list;
+    private List<java.math.BigDecimal> parsePrices(List<WebElement> elements) {
+        // Price format: "$ 29.99" — parsed with BigDecimal (see utils.Prices)
+        return utils.Prices.parseAll(toStringList(elements));
     }
 }

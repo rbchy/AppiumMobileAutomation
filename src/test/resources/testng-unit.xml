@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<!-- Device-free unit tests for the framework helpers (no emulator / Appium needed).
+     Run with: mvn test -Dsuite=testng-unit -->
+<suite name="UnitSuite" verbose="1">
+    <test name="FrameworkUtils">
+        <classes>
+            <class name="unit.UtilsTest"/>
+        </classes>
+    </test>
+</suite>

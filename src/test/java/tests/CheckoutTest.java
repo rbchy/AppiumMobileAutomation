@@ -63,7 +63,7 @@ public class CheckoutTest extends BaseTest {
         // Step 6: Fill payment details
         checkout.fillPaymentDetails(
             "4111111111111111",  // Test VISA card
-            "12/25",
+            "12/30",            // expiry must be in the future (12/25 has already passed)
             "123",
             "Bob User"
         );

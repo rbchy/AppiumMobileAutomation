@@ -3,7 +3,7 @@
 
 <!--
     SMOKE SUITE — runs only the most critical tests.
-    Run with: mvn clean test -DsuiteXmlFile=src/test/resources/testng-smoke.xml
+    Run with: mvn clean test -Dsuite=testng-smoke
 -->
 <suite name="MobileSmokeSuite" verbose="2">
 
