@@ -22,7 +22,10 @@ adb devices
 mvn clean test
 
 # Run smoke test only (fastest — just AddToCart)
-mvn clean test -DsuiteXmlFile=src/test/resources/testng-smoke.xml
+mvn clean test -Dsuite=testng-smoke
+
+# Device-free unit tests (no emulator / Appium)
+mvn clean test -Dsuite=testng-unit
 
 # Run a single test class
 mvn clean test -Dtest=LoginTest
@@ -172,7 +175,7 @@ protected boolean noReset() { return false; }
 
 ## Known Issues & Fixes
 
-### 1. Selenium must be pinned to 4.19.0
+### 1. Selenium must be pinned (currently 4.21.0)
 `java-client 9.2.2` declares version range `[4.19.0, 5.0)`.
 Maven resolves this to `4.45.0` which has breaking API changes — causes **silent class loading failure** where TestNG reports 0 tests with no error.
 
@@ -222,14 +225,18 @@ is not picked up by subclasses. Use `7.10.2`.
 `noReset=true` keeps cart state between test runs.
 **Never** assert `cartCount == 1`. Always read initial count then assert `initial + 1`.
 
-### 5. CheckoutTest and NegativeTest element IDs need verification
-`CheckoutPage.java` field IDs (`fullNameET`, `address1ET`, etc.) are educated
-guesses based on the app's naming convention. If `CheckoutTest` fails, save
-the page source and verify actual IDs:
-```java
-// Add to test temporarily:
-Files.write(Paths.get("/path/to/page_source.xml"), driver.getPageSource().getBytes());
-```
+### 5. Checkout IDs are verified; failures dump the screen automatically
+`CheckoutPage` field IDs (`fullNameET`, `address1ET`, ...) are confirmed on app 2.3.0.
+`BaseTest` saves `target/page-sources/<Class>_<test>_FAILED.xml` + `.png` for every
+failed test, and `utils.Diagnostics.savePageSource(driver, "name.xml")` dumps on demand.
+
+### 6. Small screens: scroll before touching lower controls
+On the CI emulator the +/- buttons and lower checkout fields are below the fold.
+Use `utils.Gestures.scrollTo(driver, locator)` instead of `driver.findElement`.
+
+### 7. Configuration
+`-Dappium.url / APPIUM_URL`, `-Ddevice.name / DEVICE_NAME`, `-Dapp.path / APP_PATH`
+(see `utils.AppConfig`). CI downloads the APK with `scripts/get-apk.sh`.
 
 ---
 
@@ -238,7 +245,7 @@ Files.write(Paths.get("/path/to/page_source.xml"), driver.getPageSource().getByt
 ```
 io.appium:java-client         9.2.2
 org.testng:testng             7.10.2
-Selenium (pinned)             4.19.0
+Selenium (pinned)             4.21.0
 maven-surefire-plugin         3.2.5
 Java                          17
 ```
