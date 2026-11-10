@@ -2,6 +2,7 @@ package pages;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -58,13 +59,13 @@ public class CheckoutPage {
 
         savePageSource("checkout_shipping_source.xml");
 
-        driver.findElement(fullNameField).sendKeys(name);
-        driver.findElement(addressField).sendKeys(address);
-        driver.findElement(cityField).sendKeys(city);
-        driver.findElement(stateField).sendKeys(state);
-        driver.findElement(zipField).sendKeys(zip);
-        driver.findElement(countryField).sendKeys(country);
-        driver.findElement(toPaymentButton).click();
+        type(fullNameField, name);
+        type(addressField, address);
+        type(cityField, city);
+        type(stateField, state);
+        type(zipField, zip);
+        type(countryField, country);
+        utils.Gestures.scrollTo(driver, toPaymentButton).click();
     }
 
     /**
@@ -78,19 +79,19 @@ public class CheckoutPage {
 
         savePageSource("checkout_payment_source.xml");
 
-        driver.findElement(cardNumberField).sendKeys(cardNumber);
-        driver.findElement(expiryField).sendKeys(expiry);
-        driver.findElement(cvvField).sendKeys(cvv);
-        driver.findElement(cardOwnerField).sendKeys(cardOwner);
-        driver.findElement(toReviewButton).click();
+        type(cardNumberField, cardNumber);
+        type(expiryField, expiry);
+        type(cvvField, cvv);
+        type(cardOwnerField, cardOwner);
+        utils.Gestures.scrollTo(driver, toReviewButton).click();
     }
 
     /** Taps "Place Order" on the review screen. */
     public void placeOrder() {
         new WebDriverWait(driver, Duration.ofSeconds(10))
-            .until(ExpectedConditions.visibilityOfElementLocated(placeOrderButton));
+            .until(ExpectedConditions.presenceOfElementLocated(placeOrderButton));
         savePageSource("checkout_review_source.xml");
-        driver.findElement(placeOrderButton).click();
+        utils.Gestures.scrollTo(driver, placeOrderButton).click();
     }
 
     /** Returns true if any known order-confirmation text appears on screen. */
@@ -104,6 +105,13 @@ public class CheckoutPage {
             savePageSource("checkout_confirm_source.xml"); // save even on failure
             return false;
         }
+    }
+
+    /** Scrolls the field into view (lower fields are below the fold on small screens), clears it and types. */
+    private void type(By field, String value) {
+        WebElement el = utils.Gestures.scrollTo(driver, field);
+        el.clear();
+        el.sendKeys(value);
     }
 
     /** Writes driver.getPageSource() to target/page-sources/ so element IDs can be inspected. */

@@ -80,16 +80,16 @@ public class ProductPage {
 
     /** Taps the + button to increase quantity. */
     public void tapPlus() {
-        driver.findElement(plusButton).click();
+        utils.Gestures.scrollTo(driver, plusButton).click();
     }
 
     /** Taps the - button to decrease quantity (minimum stays at 1). */
     public void tapMinus() {
-        driver.findElement(minusButton).click();
+        utils.Gestures.scrollTo(driver, minusButton).click();
     }
 
     /** Returns current quantity value as text, e.g. "1", "2", "3". */
     public String getQuantity() {
-        return driver.findElement(quantityText).getText();
+        return utils.Gestures.scrollTo(driver, quantityText).getText();
     }
 }
